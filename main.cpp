@@ -18,7 +18,7 @@ struct Node {
     }
 };
 
-int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) {
+int dijkstraShortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) {
     int row = heightMap.size();
     int col = heightMap[0].size();
     /*cout << "Value of n:" << n << endl;
@@ -106,10 +106,9 @@ int main() {
     }
     // S_Distance = Sqrt(30^2 + |start.pixelVal - end.pixelVal|^2); pixelVal willb be in meters after multiplying with 11
 
-    int startPixelHeightVal = preEruptionHeightMap[2][1];
+    /*int startPixelHeightVal = preEruptionHeightMap[2][1];
     int endPixelHeightVal = preEruptionHeightMap[3][4];
-    int distance = sqrt(pow(30, 2) + pow(abs(startPixelHeightVal - endPixelHeightVal), 2));
-    cout << "Distance" << distance << endl;
+    int distance = sqrt(pow(30, 2) + pow(abs(startPixelHeightVal - endPixelHeightVal), 2));*/
 
     // std::vector<int> dr{-1, -1, 1, };
     // std::vector<int> dc{-1,  0, 1, 1, 0, -1, -1};
@@ -126,8 +125,20 @@ int main() {
 
     // dr : -1, -1, 0, 1, 1, 0
     // dc : 0, 1, 1, 0, -1, -1
-    Node start{0, 0, 0};
-    Node end{2, 2, 0};
+    /*Node start{0, 0, 0};
+    Node end{2, 2, 0};*/
+    Node start;
+    Node end;
+    //User Inputs for start and end vertex point
+    cout << "Enter x-coordinate for Start node: ";
+    std::cin >> start.x;
+    cout << "Enter y-coordinate for Start node: ";
+    std::cin >> start.y;
+    cout << "Enter x-coordinate for End node: ";
+    std::cin >> end.x;
+    cout << "Enter y-coordinate for End node: ";
+    std::cin >> end.y;
+
 
     cout << endl << "preEruptionHeightMap" << endl;
     for (int i = 0; i < 3; ++i) {
@@ -136,7 +147,7 @@ int main() {
         }
         cout << endl;
     }
-    int preEruptionDist = shortestPathFinding(preEruptionHeightMap, start, end);
+    int preEruptionDist = dijkstraShortestPathFinding(preEruptionHeightMap, start, end);
 
     cout << endl << "" << endl;
     cout << endl << "postEruptionHeightMap" << endl;
@@ -146,8 +157,9 @@ int main() {
         }
         cout << endl;
     }
-    int postEruptionDist = shortestPathFinding(postEruptionHeightMap, start, end);
-
+    int postEruptionDist = dijkstraShortestPathFinding(postEruptionHeightMap, start, end);
+    cout << "Surface distance from point A to point B in pre-eruption height map: " << preEruptionDist << " meters" << endl;
+    cout << "Surface distance from point A to point B in post-eruption height map: " << postEruptionDist << " meters" << endl;
     cout<< "Difference in surface distance between Pre-Eruption and Post-Eruption: " << abs(preEruptionDist - postEruptionDist) << " meters" << endl;
 
 }
