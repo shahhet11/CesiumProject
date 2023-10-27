@@ -21,8 +21,6 @@ struct Node {
 int dijkstraShortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) {
     int row = heightMap.size();
     int col = heightMap[0].size();
-    /*cout << "Value of n:" << n << endl;
-    cout << "Value of m:" << m << endl;*/
     int distance = 0;
     vector<vector<int>> dist(row, vector<int>(col, infinity));
     priority_queue<Node, vector<Node>, greater<Node>> pq;
@@ -45,8 +43,6 @@ int dijkstraShortestPathFinding(vector<vector<int>>& heightMap, Node& start, Nod
         for (int i = 0; i < dr.size(); ++i) {
             int nx = curr.x + dr[i];
             int ny = curr.y + dc[i];
-                /*cout << "Value of nx " << nx << endl;
-                cout << "Value of ny " << ny << endl;*/
                 if (nx < 0 || nx >= row || ny < 0 || ny >= col) {
                     continue;
                 }
@@ -104,14 +100,6 @@ int main() {
             postEruptionHeightMap[i][j] = postEruptionData[index] * 11;
         }
     }
-    // S_Distance = Sqrt(30^2 + |start.pixelVal - end.pixelVal|^2); pixelVal willb be in meters after multiplying with 11
-
-    /*int startPixelHeightVal = preEruptionHeightMap[2][1];
-    int endPixelHeightVal = preEruptionHeightMap[3][4];
-    int distance = sqrt(pow(30, 2) + pow(abs(startPixelHeightVal - endPixelHeightVal), 2));*/
-
-    // std::vector<int> dr{-1, -1, 1, };
-    // std::vector<int> dc{-1,  0, 1, 1, 0, -1, -1};
   
     /*
     1 2 3
