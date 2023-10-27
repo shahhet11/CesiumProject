@@ -32,5 +32,20 @@ int main() {
         cout << "Element at index " << i << ": " << static_cast<int>(element) << endl;
     }*/
 
+    for (int i = 0; i < 512; ++i) {
+        for (int j = 0; j < 512; ++j) {
+            int index = i * 512 + j;
+            preEruptionHeightMap[i][j] = preEruptionData[index] * 11;
+            postEruptionHeightMap[i][j] = postEruptionData[index] * 11;
+        }
+    }
+
+    cout << endl << "preEruptionHeightMap" << endl;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            cout << "[ [" << i << "][" << j << "] = " << preEruptionHeightMap[i][j] << " ]" << "   ";
+        }
+        cout << endl;
+    }
 
 }
