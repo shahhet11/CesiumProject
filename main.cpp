@@ -86,7 +86,7 @@ int main() {
     // read .data files into preEruptionHeightMap and postEruptionHeightMap
     vector<unsigned char> preEruptionData = readBinaryFile("pre.data");
     vector<unsigned char> postEruptionData = readBinaryFile("post.data");
-    cout << preEruptionData.size() << endl;
+    /*cout << preEruptionData.size() << endl;*/
 
     /*for (size_t i = 0; i < preEruptionData.size(); ++i) {
         unsigned char element = preEruptionData[i];
