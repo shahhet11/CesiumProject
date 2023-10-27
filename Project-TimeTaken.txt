@@ -1,0 +1,15 @@
+Approximate timings in PST
+
+10/27/2023, Friday
+
+7:00 AM - 8:00 AM - Understanding the problem statement, initializing the project and creating the repository on Github
+8:00 AM - 11:00 AM - 
+i) Reading the binary data of Height Map values and converting it into 2D Matrix,
+ii) Algorithm design approach for shortest path finding in rough paper work.
+iii) Did some trial and error by doing a dry run of traversing through the most optimal nearest node and finding the path(to destination).
+iV) Implementing the code.
+v) Removing debug statements and unnecessary commented code.
+
+
+
+
