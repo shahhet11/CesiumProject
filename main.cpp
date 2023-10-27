@@ -27,6 +27,8 @@ int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) 
     vector<vector<int>> dist(row, vector<int>(col, infinity));
     priority_queue<Node, vector<Node>, greater<Node>> pq;
     pq.push(start);
+    std::vector<int> dr{ -1, -1, 0, 1, 1, 0 };
+    std::vector<int> dc{ 0, 1, 1, 0, -1, -1 };
     dist[start.x][start.y] = 0;
     int currCost = 0;
     while (!pq.empty()) {
@@ -36,19 +38,19 @@ int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) 
 
             return curr.dist;
         }
+        if (curr.dist > dist[curr.x][curr.y]) {
+            continue;
+        }
         cout << "Current  [x, y] = " << "[" << curr.x << ", " << curr.y << "] Cost: " << currCost << endl;
-        for (int dx = -1; dx <= 1; ++dx) {
-            for (int dy = -1; dy <= 1; ++dy) {
-                if (dx == 0 && dy == 0) {
-                    continue;
-                }
-                int nx = curr.x + dx;
-                int ny = curr.y + dy;
+        for (int i = 0; i < dr.size(); ++i) {
+            int nx = curr.x + dr[i];
+            int ny = curr.y + dc[i];
                 /*cout << "Value of nx " << nx << endl;
                 cout << "Value of ny " << ny << endl;*/
                 if (nx < 0 || nx >= row || ny < 0 || ny >= col) {
                     continue;
                 }
+                cout << "Value [nx, ny] = " << "[" << nx << ", " << ny << "]" << endl;
                 int startPixelHeightVal = heightMap[curr.x][curr.y];
                 int endPixelHeightVal = heightMap[nx][ny];
                 int cost = sqrt(pow(30, 2) + pow(abs(startPixelHeightVal - endPixelHeightVal), 2));
@@ -59,7 +61,6 @@ int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) 
                     pq.push({ nx, ny, dist[nx][ny] });
 
                 }
-            }
         }
     }
     
@@ -147,6 +148,6 @@ int main() {
     }
     int postEruptionDist = shortestPathFinding(postEruptionHeightMap, start, end);
 
-
+    cout<< "Difference in surface distance between Pre-Eruption and Post-Eruption: " << abs(preEruptionDist - postEruptionDist) << " meters" << endl;
 
 }
