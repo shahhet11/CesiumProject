@@ -32,6 +32,10 @@ int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) 
     while (!pq.empty()) {
         Node curr = pq.top();
         pq.pop();
+        if (curr.x == end.x && curr.y == end.y) {
+
+            return curr.dist;
+        }
         cout << "Current  [x, y] = " << "[" << curr.x << ", " << curr.y << "] Cost: " << currCost << endl;
         for (int dx = -1; dx <= 1; ++dx) {
             for (int dy = -1; dy <= 1; ++dy) {
@@ -59,7 +63,7 @@ int shortestPathFinding(vector<vector<int>>& heightMap, Node& start, Node& end) 
         }
     }
     
-    return 0;
+    return -1;
 }
 
 
@@ -108,7 +112,7 @@ int main() {
 
     // std::vector<int> dr{-1, -1, 1, };
     // std::vector<int> dc{-1,  0, 1, 1, 0, -1, -1};
-
+  
     /*
     1 2 3
     4 5 6
@@ -118,8 +122,11 @@ int main() {
     5  6  7
     10 11 12
     */
-    Node start{0, 0};
-    Node end{2, 2};
+
+    // dr : -1, -1, 0, 1, 1, 0
+    // dc : 0, 1, 1, 0, -1, -1
+    Node start{0, 0, 0};
+    Node end{2, 2, 0};
 
     cout << endl << "preEruptionHeightMap" << endl;
     for (int i = 0; i < 3; ++i) {
